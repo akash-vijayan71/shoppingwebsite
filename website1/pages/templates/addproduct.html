@@ -1,0 +1,37 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+add product page 
+{% endblock %}
+
+
+{% block content %}
+<h1 class="pages">ADDPRODUCT PAGE</h1>
+<section class="apbox">
+    <div class="cntct">
+        <form action="/addproduct" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 mt-3">
+                <label for=" p_name" class="form-label">Enter Product Name:</label>
+                <input type="text" class="form-control" id="p_name" placeholder="Enter name" name="p_name">
+              </div>
+              <label for="p_price" class="form-label">Enter Product Price</label>
+              <input type="number" class="form-control" id="p_price" placeholder="Enter price" name="p_price">
+              <br>
+              <label for="p_image" class="form-label">choose Product Image</label>
+              <input type="file" class="form-control" id="p_image" placeholder="Enter image" name="p_image">
+              <br><br>
+              <label for="p_category" class="form-label">Choose Product Category:</label>
+              <select name="p_category" id="p_category">
+                {% for x in category %}
+                  <option value="{{ x.id }}">{{ x.c_name }}</option>
+                  {% endfor %}
+              </select>
+              <br>
+              <button>submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

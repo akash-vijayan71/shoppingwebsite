@@ -1,0 +1,26 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+Adminlogin Page
+{% endblock %}
+
+{% block content %}
+<h1 class="pages">ADMIN LOGIN PAGE</h1>
+<section>
+    <div class="cntct">
+        <form action="/adminlogin" method="post">
+            {% csrf_token %}
+            <div class="mb-1 mt-1">
+                <label for=" username" class="form-label">Enter your UserName:</label>
+                <input type="text" class="form-control" id="" placeholder="Enter  username" name="ad_uname">
+              </div>
+              <label for="password" class="form-label">Enter your Password</label>
+              <input type="password" class="form-control" id="" placeholder="Enter pswrd" name="ad_pwd">
+              <br><br>
+              <button>submit</button>
+            </div>
+        </form>
+</div>
+</section>
+{% endblock %}

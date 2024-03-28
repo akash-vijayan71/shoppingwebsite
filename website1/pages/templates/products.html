@@ -1,0 +1,70 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+login 
+{% endblock %}
+
+
+{% block content %}
+<h1 class="pages">PRODUCTS PAGE</h1>
+<section class="box">
+    <div class="col">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="/index">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="/products">PRODUCTS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="">CONTACT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="">ABOUT</a>
+                  </li>            
+                </ul>
+              </div> 
+            </div>
+                <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>
+           
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for x in products %}
+            <div class="col-sm-12 col-md-6 col-lg-4" >
+                <div class="inbox">
+                    <img src="/media/{{ x.p_image }}" alt="" class="img w-100">
+                    <div class="inbox13">
+                    <h4>{{ x.p_name }}</h4>
+                    <h4>{{ x.p_description }}</h4>                   
+                    <h5 class="price">Rs.{{x.p_price}}</h5>
+                    <h5>Rs.{{x.p_disprice}}</h5>
+                   <div class="row">
+                    <div class="col ">
+                        <a href="/addtocart/{{x.id}}" style="text-decoration: none;">
+                            <button class="btn1"  style="outline: none; border: none;">Cart</button>
+                        </a>
+                    </div>
+                    <div class="col ">
+                        <a href="/addtowishlist/{{ x.id }}">
+                        <button style="outline: none; border: none;"><i class="bi bi-heart"></i></button>
+                    </a>
+                    </div>
+                </div>
+                   </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

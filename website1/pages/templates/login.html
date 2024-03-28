@@ -1,0 +1,57 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+login 
+{% endblock %}
+
+
+{% block content %}
+<h1 class="pages">LOGIN PAGE</h1>
+<section>
+    <div class="col">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="/index">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="/products">PRODUCTS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="">CONTACT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="">ABOUT</a>
+                  </li>            
+                </ul>
+              </div> 
+            </div>
+                <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>
+           
+              <a class="nav-link toplink" href="/login"><img src="{% static 'img40.png' %}" alt="" height="30px"></a>           
+          </nav>
+    </div>
+    <div class="cntct">
+        <form action="/login" method="post">
+            {% csrf_token %}
+            <div class="mb-3 mt-3">
+                <label for=" username" class="form-label">Enter your Name:</label>
+                <input type="text" class="form-control" id="log_uid" placeholder="Enter  username" name="log_uid">
+              </div>
+              <label for="password" class="form-label">Enter your Password</label>
+              <input type="password" class="form-control" id="log_pwd" placeholder="Enter pswrd" name="log_pwd">
+              <br><br>
+              <p>If Not Registered Click Here<a href="/register">REGISTER NOW</a>To Register</p>
+              <button>submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}

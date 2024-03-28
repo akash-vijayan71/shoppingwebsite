@@ -1,0 +1,85 @@
+{% extends 'adminmaster.html' %}
+{% load static %}
+
+{% block title %}
+wishlist page
+{% endblock %}
+
+{% block content %}
+
+<h1 class="pages">WISHLIST PAGE</h1>
+<section>
+    <div class="col">
+        <nav class="navbar navbar-expand-sm navbar-light ">
+            <div class="container-fluid">
+              <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="/index">HOME</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="/products">PRODUCTS</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="">CONTACT</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link toplink" href="">ABOUT</a>
+                  </li>            
+                </ul>
+              </div> 
+            </div>
+                <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>
+           
+              
+          </nav>
+    </div>
+    <div class="container">
+         <div class="row">
+           <div class="col-sm-4">
+            <div class="inbox11">
+                <h4>Product Name</h4>
+            </div>
+           </div>
+           <div class="col-sm-4">
+            <div class="inbox11">
+                <h4>Product Price</h4>
+            </div>
+           </div>
+           <div class="col-sm-4">
+            <div class="inbox11">
+                <h4>Stock Status</h4>
+            </div>
+           </div>
+        </div>
+        <div class="row">
+            {% for x in wishlist %}
+            <div class="col-sm-4">
+                <div class="inbox12" >
+                   <div class="divcenter" style="width: 300px;">
+                    <h3 style="text-align: center;" ><img src="/media/{{ x.w_image }}" alt="" width="200"></h3>
+                    <h4 style="text-align: center;">{{ x.w_name }}</h4>
+                   </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="inbox12">
+                    <h4>{{ x.w_price }}</h4>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="inbox12">
+                    <h4>{{ x.w_stock }}</h4>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</section>
+
+{% endblock %}

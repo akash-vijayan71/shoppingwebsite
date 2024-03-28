@@ -1,0 +1,138 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+login 
+{% endblock %}
+
+
+{% block content %}
+<h1 class="pages">Cart page</h1>
+<div class="col">
+    <nav class="navbar navbar-expand-sm navbar-light ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link toplink" href="/index">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link toplink" href="/products">PRODUCTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link toplink" href="">CONTACT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link toplink" href="">ABOUT</a>
+              </li>            
+            </ul>
+          </div> 
+        </div>
+            <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>       
+      </nav>
+</div>
+<h2>My shopping Hub</h2>
+<div class="line">
+</div>
+<hr class="cr">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7 col-sm-6">
+                    <div class="row hiderow">
+                        <div class="col-xl-3 col-lg-3 col-sm-3">
+                            <div class="inbox2">
+                                <h3>Product</h3>                       
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-sm-3">
+                            <div class="inbox3 text-center">
+                                <h3 class="">Price</h3>                       
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-sm-3">
+                            <div class="inbox4">
+                                <h3>Quantity</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-sm-3">
+                            <div class="inbox4">
+                                <h3>Total</h3>
+                            </div>     
+                        </div>
+                    </div>
+
+        <hr class="cr">
+        <div class="row">
+            {% for x in cart %}
+            <div class="col-sm-12">
+                <div class="inbox6 mb-3">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-sm-12">
+                            <div class="inbox5">
+                                <img src="/media/{{ x.cp_image }}" alt="" class="w-100">
+                                <span class=" h4 align ch">Name :</span>
+                                <span class=" h4 align">{{ x.cp_name }}</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-sm-12">
+                            <div class="inbox1">
+                                <span class=" h4 align ch">Price :</span>
+                                <span class=" h4 align2 align">{{ x.cp_disprice }}</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-sm-12">
+                            <span class=" h4 align ch">Quantity :</span>
+                            
+                            <div class="inbox5">
+                                <form action="/cart" method="post" class="qtyform">
+                                    {% csrf_token %}
+                                     <input type="hidden" name="cid" value="{{x.id}}">
+                                     <input type="submit" name="qty" value="-" >
+                            </form>
+                            <input type="text" name="" class="inpbox" value="{{ x.cp_qty }}">
+                              <form action="/cart" method="post" class="qtyform">
+                                {% csrf_token %}
+                                <input type="hidden" name="cid" id="" value="{{x.id}}">
+                                <input type="submit" name="qty" value="+">
+                            </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 col-sm-12">
+                            <div class="inbox5">
+                                <span class=" h4 align ch">Amount :</span>
+                                <span class="h4">{{ x.cp_amount }}</span>
+                                <a href="/deletecart/{{x.id}}">
+                                  <button type="submit"><i class="material-icons">&#xe872;</i></button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+
+
+<div class="col-xl-4 col-lg-5 col-sm-6">
+    <div class="inboxx">
+        <h5 class="text-center">Summary</h5>
+        <hr>
+        <h4>Total:{{ total }}</h4>
+        <a href="/addtocheckout">   
+            <button>Continue To Checkout</button>
+       </a>
+        <hr>     
+    </div>
+</div> 
+</div>
+</div>
+<hr>
+
+{% endblock %}

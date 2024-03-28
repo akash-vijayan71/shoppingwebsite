@@ -1,0 +1,29 @@
+{% extends 'adminmaster.html' %}
+{% load static %}
+
+{% block title %}
+addcategory page
+{% endblock %}
+
+{% block content %}
+
+<h1 class="pages">ADD CATEGORY PAGE</h1>
+<section class="apbox">
+    <div class="cntct">
+        <form action="/addcategory" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 mt-3">
+                <label for=" " class="form-label">Enter Category Name:</label>
+                <input type="text" class="form-control" id="c_name" placeholder="Enter name" name="c_name">
+              </div>
+              <br>
+              <label for="">Enter Category Image</label>
+              <input type="file" class="form-control" id="c_image" placeholder="Enter image" name="c_image">
+        <br><br>
+             <button>submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

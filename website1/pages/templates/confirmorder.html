@@ -1,0 +1,43 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+ABOUT
+{% endblock %}
+
+
+{% block content %}
+<div class="col">
+  <nav class="navbar navbar-expand-sm navbar-light ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link toplink" href="/index">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toplink" href="/products">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toplink" href="">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toplink" href="">ABOUT</a>
+            </li>            
+          </ul>
+        </div> 
+      </div>
+          <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>
+     
+        <a class="nav-link toplink" href="/login"><img src="{% static 'img40.png' %}" alt="" height="30px"></a>        
+    </nav>
+</div>
+<div class="orderbox">
+  <p> <span style='font-size:50px;'>&#10004;</span> <h1>YOUR ORDER IS CONFIRMED</h1></p>
+</div>
+
+{% endblock %}

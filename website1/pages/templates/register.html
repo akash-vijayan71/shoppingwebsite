@@ -1,0 +1,68 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+register
+{% endblock %}
+
+{% block content %}
+<h1 class="pages">REGISTER PAGE</h1>
+<div class="col">
+  <nav class="navbar navbar-expand-sm navbar-light ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mynavbar">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link toplink" href="/index">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toplink" href="/products">PRODUCTS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toplink" href="">CONTACT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link toplink" href="">ABOUT</a>
+            </li>            
+          </ul>
+        </div> 
+      </div>
+          <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>
+     
+        <a class="nav-link toplink" href="/login"><img src="{% static 'img40.png' %}" alt="" height="30px"></a>        
+    </nav>
+</div>
+  {% for msg in messages %}
+    {{ msg }}
+  {% endfor %}
+<div class="contct">
+<form action="\register" method="post">
+    {% csrf_token %}
+    <div class="mb-3 mt-3">
+        <label for=" name" class="form-label label1">Enter your Name:</label>
+        <input type="text" class="form-control" id="reg_name" placeholder="Enter name" name="reg_name">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Enter your Email Email:</label>
+        <input type="email" class="form-control" id="reg_email" placeholder="Enter email" name="reg_email">
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Enter your Phone number:</label>
+        <input type="number" class="form-control" id="reg_num" placeholder="Enter phone" name="reg_num">
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Enter your Username:</label>
+        <input type="text" class="form-control" id="reg_uname" placeholder="Enter username" name="reg_uname">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Enter your Password</label>
+        <input type="password" class="form-control" id="reg_pswrd" placeholder="Enter pswrd" name="reg_pswrd">
+      </div>
+    <button>submit</button>
+</form>
+</div>
+{% endblock %}

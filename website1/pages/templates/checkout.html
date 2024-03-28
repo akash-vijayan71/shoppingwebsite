@@ -1,0 +1,203 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block title %}
+Checkout Page
+{% endblock %}
+
+{% block content %}
+<h1 class="pages">Checkout Page</h1>
+<div class="col">
+    <nav class="navbar navbar-expand-md navbar-light ">
+        <div class="container-fluid">
+          <a class="navbar-brand" href=""><img src="{% static 'img35.png' %}" alt="" height="70px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mynavbar">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link toplink" href="/index">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link toplink" href="/products">PRODUCTS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link toplink" href="">CONTACT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link toplink" href="">ABOUT</a>
+              </li>            
+            </ul>
+            <a class="nav-link toplink" href="/cart"><img src="{% static 'img39.png' %}" alt="" height="30px"></a>
+       
+            <a class="nav-link toplink" href="/login"><img src="{% static 'img40.png' %}" alt="" height="30px"></a>   
+          </div> 
+        </div>
+                 
+      </nav>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-8 col-lg-7 col-md-6 col-sm-12">
+      <div class="row hiderow">
+          <div class="col-xl-3 col-lg-3 col-sm-3">
+              <div class="inbox2">
+                  <h3>Product</h3>                       
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-3">
+              <div class="inbox3 text-center">
+                  <h3 class="">Price</h3>                       
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-3">
+              <div class="inbox4">
+                  <h3>Quantity</h3>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-3">
+              <div class="inbox4">
+                  <h3>Total</h3>
+              </div>     
+          </div>
+      </div>
+
+<hr class="cr">
+<div class="row">
+{% for x in order %}
+<div class="col-xl-12 col-lg-12 col-sm-12">
+  <div class="inbox6 mb-3">
+      <div class="row">
+          <div class="col-xl-3 col-lg-3 col-sm-12">
+              <div class="inbox5">
+                  <img src="/media/{{ x.odr_image }}" alt="" class="w-100">
+                  <span class=" h4 align ch">Name :</span>
+                  <span class=" h4 align">{{ x.odr_name }}</span>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-12">
+              <div class="inbox1">
+                  <span class=" h4 align ch">Price :</span>
+                  <span class=" h4 align">{{ x.odr_disprice }}</span>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-12">
+              <span class=" h4 align ch">Quantity :</span>
+              
+              <div class="inbox5">
+                  <h4>{{ x.odr_qty }}</h4>
+              </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-sm-12 col-md-">
+              <div class="inbox5">
+                  <span class=" h4 align ch">Amount :</span>
+                  <span class="h4">{{ x.odr_amount }}</span>                 
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+      <!-- <div class="col-xl-8 col-lg-7 col-md-7 col-sm-12" >
+          <div class="row">
+      <div class="col-sm-3 col-lg-3">
+          <div class="inbox2">
+              <h3>Product</h3>                       
+          </div>
+      </div>
+      <div class="col-sm-3 col-lg-3">
+          <div class="inbox3">
+              <h3>Price</h3>                       
+          </div>
+      </div>
+      <div class="col-sm-3 col-lg-3">
+          <div class="inbox4">
+              <h3>Quantity</h3>
+          </div>
+      </div>
+      <div class="col-sm-3 col-lg-3">
+          <div class="inbox4">
+              <h3>Total</h3>
+          </div>     
+      </div>
+  </div>
+<hr>
+<div class="row">
+  {% for x in order %}
+  <div class="col-sm-12 ">
+      <div class="inbox6 mb-3">
+          <div class="row">
+              <div class="col-sm-3 col-lg-3">
+                  <div class="inbox5">
+                      <img src="/media/{{ x.odr_image }}" alt="" class="w-100">
+                      <h4 class="align">{{ x.odr_name }}</h4>
+                  </div>
+              </div>
+              <div class="col-sm-3 col-lg-3">
+                  <div class="inbox1">
+                      <h4>{{ x.odr_price }}</h4>
+                  </div>
+              </div>
+              <div class="col-sm-3 col-lg-3">
+                <div class="inbox1">
+                  <h4>{{ x.odr_qty }}</h4>
+              </div>
+              </div>
+              <div class="col-sm-3 col-lg-3">
+                  <div class="inbox5">
+                      <h4>{{ x.odr_amount }}</h4>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+  
+</div>
+<hr>
+</div> -->
+
+<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+<div class="inboxx">
+<h5>Billing address</h5>
+<hr>
+<form action="/confirmorder" method="post">
+    {% csrf_token %}
+<label for="">Enter your Name:</label>
+<input type="text" name="on" id="" placeholder="sam" required>
+<br><br>
+<label for="">Enter your Address</label>
+<textarea name="oa" id="" cols="21" rows="4" placeholder="street/flat:no" required></textarea>
+<br><br>
+<label for="">Enter your Phone</label>
+<input type="number" name="op" id="" placeholder="123456789" required>
+<br><br>
+<label for="">Enter your Email</label>
+<input type="email" name="oe" id="" placeholder="sam@email.com" required>
+<hr>
+<label for="">Payment Method:</label>
+<label class="container">Cash On Delivery
+    <input type="radio" name="payment" value="cash">
+    <span class="checkmark"></span>
+  </label>
+  
+  <label class="container">Online Payment
+    <input type="radio" name="payment" value="online">
+    <span class="checkmark"></span>
+  </label>
+  </label>
+<hr>
+<h6>Total:{{ total }}</h6>
+<button type="submit">Confirm</button>
+</form>
+</div>
+</div> 
+</div>
+</div>
+
+{% endblock %}

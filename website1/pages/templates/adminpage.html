@@ -1,0 +1,90 @@
+{% extends 'adminmaster.html' %}
+{% load static %}
+
+{% block title %}
+Admin page
+{% endblock %}
+
+{% block content %}
+<body>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    li {
+      display: inline;
+    }
+    </style>
+</body>
+<ul>
+  <li><a class="navbar-brand" target="_blank" href="/index">Goto website</a></li>
+  <li style="float:right"><a class="newlink1" href="/addproduct">AddProducts</a></li>
+  <li style="float:right"><a class="newlink2" href="/adminproducts">Products</a></li>
+  <a href="/adminlogout">Logout</a>
+</ul>
+
+<h1 class="pages">ADMIN PAGE</h1>
+<br><br><br>
+<div class="container">
+  <div class="row">
+      <div class="col-sm-3">
+          <div class="inbox11">
+              <h3>Image</h3>                       
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="inbox11">
+              <h3>Name</h3>                       
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="inbox11">
+              <h3>Price</h3>
+          </div>
+      </div>
+      <div class="col-sm-3">
+          <div class="inbox11">
+              <h3>Action</h3>
+          </div>     
+      </div>
+</div>
+<hr>
+<div class="row">
+  {% for x in products %}
+  <div class="col-sm-12">
+          <div class="row">
+              <div class="col-sm-3">
+                  <div class="inbox10">
+                      <img src="/media/{{ x.p_image }}" alt="" class="w-50 mb-2">
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="inbox10">
+                    <h4 class="">{{ x.p_name }}</h4>
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="inbox10">
+                  <h4>{{ x.p_price }}</h4>
+              </div>
+              </div>
+              <div class="col-sm-3">
+                  <div class="inbox10"> 
+                    <a href="/editproduct/{{ x.id}}">              
+                      <button>Edit</button> 
+                    </a>   
+                    <a href="/deleteproduct/{{x.id}}" >    
+                      <button>Delete</button>
+                    </a>
+                  </div>
+              </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
+  
